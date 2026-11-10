@@ -32,8 +32,9 @@ export const WEDDING = {
 } as const;
 
 // ---- Google Sheets backend (see code.ts) ----
-// Paste the Apps Script Web app URL (ends with /exec) here after deploying code.ts.
-export const SCRIPT_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+// Apps Script Web app URL (deployed from code.ts).
+export const SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbzoDoUx_rV9Yhom96iofq_jzkHfJLyW7gMZjP5GKGCUQyUGLZLx9mHHA0tlkgGC2L9XlQ/exec';
 
 /** Sends a row to the "RSVP" or "Wishes" sheet. */
 export async function submitToSheet(
