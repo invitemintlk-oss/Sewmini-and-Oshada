@@ -1,17 +1,22 @@
-1. Open your Google Sheet and create two tabs named RSVP and WISH.
-2. Open Extensions > Apps Script.
-3. Replace script content with code from google-apps-script/code.gs.
-4. Click Deploy > New deployment.
-5. Select type: Web app.
-6. Execute as: Me.
-7. Who has access: Anyone.
-8. Deploy and copy the Web App URL.
-9. In your project root, create a file named .env with:
+# Google Sheets setup (RSVP + Wishes)
 
-VITE_GOOGLE_APPS_SCRIPT_URL=YOUR_WEB_APP_URL
+Spreadsheet: https://docs.google.com/spreadsheets/d/1EYiobM9oXaz-upkrYzGO28948Oc9ej8wjRMT4o0LWqQ/edit
 
-10. Restart Vite dev server.
+1. Open the spreadsheet → **Extensions → Apps Script**.
+2. Replace everything in `Code.gs` with the contents of `code.gs` in this folder (same as `/code.ts` without the first line). Save.
+3. In the toolbar choose the function **`setup`** and click **Run**. Approve the permissions.
+   This creates the `RSVP` and `Wishes` sheets with headers.
+4. **Deploy → New deployment → Web app**
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+5. Copy the Web app URL (ends with `/exec`) and paste it into `src/wedding.ts` → `SCRIPT_URL`.
+6. Commit, push, and Vercel redeploys.
 
-Notes:
-- If you update Apps Script code later, redeploy a new version.
-- The frontend sends RSVP to sheet RSVP and wishes to sheet WISH.
+After editing the script later: **Deploy → Manage deployments → Edit → Version: New version** (the URL stays the same).
+
+| Sheet  | Columns |
+| ------ | ------- |
+| RSVP   | Timestamp, Full Name, Guests, Attendance, Dietary Notes, Invited As |
+| Wishes | Timestamp, Guest Name, Message, Invited As |
+
+"Invited As" is the guest name from the personalized link (e.g. `Mr. Sanjaya`), blank when opened without one.

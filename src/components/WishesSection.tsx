@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Loader2, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
+import { submitToSheet } from '../wedding';
 
 interface Wish {
   id: string;
@@ -31,16 +33,9 @@ export const WishesSection: React.FC = () => {
 
     try {
       // Send data to Google Sheets
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyay20jbF63BRUj8JGGbUbYkYS3Us-DpLZc2Hs34si_qKJgxs_81xpNBniXsBNFsYOt7g/exec';
-      const payload = new FormData();
-      payload.append('sheet', 'Wishes');
-      payload.append('name', formData.name);
-      payload.append('message', formData.message);
-
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: payload,
+      await submitToSheet('Wishes', {
+        name: formData.name,
+        message: formData.message,
       });
 
       const newWish: Wish = {
@@ -55,6 +50,7 @@ export const WishesSection: React.FC = () => {
       setFormData({ name: '', message: '' });
     } catch (error) {
       console.error('Error submitting wish: ', error);
+      toast.error('Sorry, your wish could not be sent. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
