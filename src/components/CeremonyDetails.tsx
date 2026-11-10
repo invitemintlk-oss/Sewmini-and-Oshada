@@ -74,44 +74,14 @@ export const CeremonyDetails: React.FC = () => {
         </div>
 
         {/* Right Side: Visual Composition */}
-        <div className="lg:w-1/2 w-full relative mt-16 lg:mt-0">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="relative"
-          >
-            {/* Artistic Background Frame */}
-            <div className="absolute -inset-4 sm:-inset-6 border-[2px] border-brand-beige/30 rounded-[2rem] sm:rounded-[3rem] -z-10 translate-x-4 sm:translate-x-8 translate-y-4 sm:translate-y-8" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-champagne/40 rounded-[2rem] sm:rounded-[3rem] blur-2xl -z-20" />
-
-            {/* Main Creative Image Frame */}
-            <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] overflow-hidden border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(176,137,104,0.2)] bg-white group">
-              <img
-                src="/2.jpg"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1519225421980-715cb02151ff?auto=format&fit=crop&q=80&w=800&h=1000";
-                  e.currentTarget.onerror = null;
-                }}
-                alt="Ceremony Venue"
-                className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5 pointer-events-none mix-blend-overlay opacity-opacity-70 group-hover:opacity-100 transition-opacity duration-1000" />
-            </div>
-
-            {/* Decorative Floating Circles */}
-            <div className="absolute -top-6 -right-6 w-24 sm:w-32 h-24 sm:h-32 rounded-full border-[1.5px] border-dashed border-brand-beige/30 animate-[spin_20s_linear_infinite]" />
-            <div className="absolute -top-2 -right-2 w-16 sm:w-24 h-16 sm:h-24 rounded-full border-[1.5px] border-brand-beige/20" />
-          </motion.div>
-
-          {/* Reception Card — Placed Below Image */}
+        <div className="lg:w-1/2 w-full relative mt-4 lg:mt-0">
+          {/* Reception Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-            className="mt-10 sm:mt-14 bg-white/85 backdrop-blur-xl p-6 sm:p-10 shadow-[0_30px_60px_rgba(176,137,104,0.15)] rounded-2xl border border-white relative overflow-hidden"
+            className="bg-white/85 backdrop-blur-xl p-6 sm:p-10 shadow-[0_30px_60px_rgba(176,137,104,0.15)] rounded-2xl border border-white relative overflow-hidden"
           >
             <div className="absolute inset-x-8 -top-px h-[2px] bg-gradient-to-r from-transparent via-brand-beige-deep/60 to-transparent" />
             <div className="relative flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
